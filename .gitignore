@@ -1,0 +1,17 @@
+node_modules
+
+# Docker image manifest files
+# pkg/<pkg> images:
+*.image
+*.push
+# Dockerfile.<base> images:
+*.docker-built
+*.docker-pushed
+
+# builds
+/dist
+dist
+
+.DS_Store
+
+**/*.direnv
