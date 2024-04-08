@@ -18,6 +18,8 @@ import { theme } from './theme/theme.ts';
 //   wallets,
 // });
 
+import "leaflet/dist/leaflet.css"; 
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/* <ChainProvider

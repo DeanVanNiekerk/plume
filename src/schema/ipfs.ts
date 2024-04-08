@@ -4,6 +4,16 @@ export type IpfsPinItem = z.infer<typeof IpfsPinItem>;
 export const IpfsPinItem = z.object({
   id: z.string(),
   ipfs_pin_hash: z.string(),
+  metadata: z.object({
+    keyvalues: z
+      .object({
+        name: z.string().optional(),
+        latitude: z.coerce.number().optional(),
+        longitude: z.coerce.number().optional(),
+      })
+      .optional()
+      .nullable(),
+  }),
 });
 
 export type IpfsPinListResponse = z.infer<typeof IpfsPinListResponse>;

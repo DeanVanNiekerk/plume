@@ -1,68 +1,31 @@
-import { Image } from '@/components/image/Image';
-import { Loader } from '@/components/loader';
-import { useIpfsPinListQuery } from '@/hooks/queries/useIpfsPinListQuery';
-import { Box, Center } from '@chakra-ui/react';
-import React, { useRef, useState } from 'react';
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
-import { TakePhotoButton } from './components/TakePhotoButton';
-import { UploadImageDrawer } from './components/UploadImageDrawer';
-// import { useChain } from "@cosmos-kit/react";
+import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import React from 'react';
+import AutoSizer from 'react-virtualized-auto-sizer';
+import { Map } from './components/Map';
+import { PhotoGrid } from './components/PhotoGrid';
 
 const HomePage: React.FC = () => {
-  const query = useIpfsPinListQuery();
-
-  const ref = useRef<HTMLInputElement>(null);
-
-  const [file, setFile] = useState<File | null>(null);
-
-  // const { isWalletConnected, openView } = useChain("laconic");
-
-  const onOpenCamera = (ev: React.MouseEvent) => {
-    setFile(null);
-
-    ev.preventDefault();
-    ev.stopPropagation();
-
-    setTimeout(() => {
-      ref.current?.click();
-    }, 100);
-  };
-
-  const onUploadFiles = (file: File) => {
-    console.log('file', file);
-    setFile(file);
-  };
-
-  if (query.isLoading) return <Loader />;
-
   return (
-    <>
-      <ResponsiveMasonry columnsCountBreakPoints={{ 100: 1, 250: 2, 600: 3 }}>
-        <Masonry>
-          {(query.data?.rows ?? []).map((item) => (
-            <Box key={item.id} m={2} borderRadius="md" overflow="hidden">
-              <Image
-                src={`https://ivory-reasonable-earwig-410.mypinata.cloud/ipfs/${item.ipfs_pin_hash}?img-width=300&img-heigh=600`}
-              />
-            </Box>
-          ))}
-        </Masonry>
-      </ResponsiveMasonry>
-      <UploadImageDrawer
-        file={file}
-        onClose={() => setFile(null)}
-        onSuccess={() => {
-          setFile(null);
-          query.refetch();
-        }}
-      />
-      <Box position="fixed" bottom={0} left={0} right={0} pb={6}>
-        <Center w="full">
-          <TakePhotoButton ref={ref} onImageSelected={onUploadFiles} onOpenCamera={onOpenCamera} />
-          {/* <Button onClick={openView}>Connect</Button> */}
-        </Center>
-      </Box>
-    </>
+    <AutoSizer>
+      {({ height, width }) => {
+        return (
+          <Tabs align="center" height={height} width={width} display="flex" flexDirection="column">
+            <TabList>
+              <Tab>Discover</Tab>
+              <Tab>Log</Tab>
+            </TabList>
+            <TabPanels display="flex" flexGrow={1} pt={4}>
+              <TabPanel w="full" p={0}>
+                <Map />
+              </TabPanel>
+              <TabPanel w="full" p={0}>
+                <PhotoGrid />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        );
+      }}
+    </AutoSizer>
   );
 };
 

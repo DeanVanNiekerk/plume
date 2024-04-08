@@ -1,4 +1,5 @@
 import { Loader } from '@/components/loader';
+import { Position } from '@/schema';
 import { uploadToIpfs } from '@/utils/ipfs';
 import {
   Box,
@@ -29,7 +30,10 @@ export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess })
   const toast = useToast();
 
   const [isSaving, setIsSaving] = useBoolean();
+
   const [url, setUrl] = useState<string | null>(null);
+
+  const [position, setPosition] = useState<Position | null>();
 
   useEffect(() => {
     if (!file) return;
@@ -43,7 +47,20 @@ export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess })
   useEffect(() => {
     const load = async () => {
       if (!file) return;
-      const tags = await ExifReader.load(file);
+
+      setPosition(null);
+
+      const tags = await ExifReader.load(file, { expanded: true });
+
+      const result = Position.safeParse({
+        latitude: tags.gps?.Latitude,
+        longitude: tags.gps?.Longitude,
+      });
+
+      if (result.success) {
+        setPosition(result.data);
+      }
+
       console.log('EXIF Data:', tags);
     };
     load();
@@ -52,10 +69,18 @@ export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess })
   const save = async () => {
     if (!file) return;
 
+    if (!position) {
+      toast({
+        title: 'Failed to get GPS data from image',
+        status: 'error',
+      });
+      return;
+    }
+
     setIsSaving.on();
 
     try {
-      const response = await uploadToIpfs(file);
+      const response = await uploadToIpfs(file, position);
       if (response) {
         toast({
           title: 'Success!',
