@@ -1,8 +1,8 @@
-import react from "@vitejs/plugin-react";
-import * as path from "path";
-import { defineConfig } from "vite";
-import { nodePolyfills } from "vite-plugin-node-polyfills";
-import mkcert from "vite-plugin-mkcert";
+import react from '@vitejs/plugin-react';
+import * as path from 'path';
+import { defineConfig } from 'vite';
+import mkcert from 'vite-plugin-mkcert';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,8 +15,8 @@ export default defineConfig({
       },
     }),
   ],
-  server: { https: true, port: 5080, host: "0.0.0.0" },
+  server: { https: true, port: 5080, host: '0.0.0.0' },
   resolve: {
-    alias: [{ find: "@", replacement: path.resolve(__dirname, "src") }],
+    alias: [{ find: '@', replacement: path.resolve(__dirname, 'src') }],
   },
 });

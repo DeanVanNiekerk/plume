@@ -1,4 +1,4 @@
-import { ColorMode, extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { ColorMode, extendTheme, ThemeConfig } from '@chakra-ui/react';
 // import '@fontsource/inter/400.css';
 // import '@fontsource/inter/500.css';
 // import '@fontsource/inter/600.css';
@@ -15,11 +15,11 @@ import { ColorMode, extendTheme, ThemeConfig } from "@chakra-ui/react";
 // import '@fontsource/poppins/500.css';
 // import '@fontsource/poppins/700.css';
 // import '@fontsource/poppins/900-italic.css';
-import { colors, semanticTokens } from "./colors";
-import { buttonTheme, drawerTheme } from "./components";
+import { colors, semanticTokens } from './colors';
+import { buttonTheme, drawerTheme } from './components';
 
 const config: ThemeConfig = {
-  initialColorMode: "dark",
+  initialColorMode: 'dark',
   useSystemColorMode: false,
 };
 
@@ -56,9 +56,9 @@ export const themeBase: Record<string, any> = {
   // },
   styles: {
     global: ({ colorMode }: { colorMode: ColorMode }) => ({
-      "html, body": {
-        color: colorMode === "dark" ? "white" : "black",
-        backgroundColor: colorMode === "dark" ? "black" : "white",
+      'html, body': {
+        color: colorMode === 'dark' ? 'white' : 'black',
+        backgroundColor: colorMode === 'dark' ? 'black' : 'white',
       },
     }),
   },

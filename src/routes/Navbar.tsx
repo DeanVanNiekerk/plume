@@ -1,6 +1,6 @@
-import { Center, Container, Flex, Heading } from "@chakra-ui/react";
-import React from "react";
-import { CONTAINER_MAX_WIDTH, NAVBAR_HEIGHT } from "./constants";
+import { Center, Container, Flex, Heading } from '@chakra-ui/react';
+import React from 'react';
+import { CONTAINER_MAX_WIDTH, NAVBAR_HEIGHT } from './constants';
 
 export const Navbar: React.FC = () => {
   return (

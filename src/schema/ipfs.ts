@@ -1,4 +1,4 @@
-import * as z from "zod";
+import * as z from 'zod';
 
 export type IpfsPinItem = z.infer<typeof IpfsPinItem>;
 export const IpfsPinItem = z.object({

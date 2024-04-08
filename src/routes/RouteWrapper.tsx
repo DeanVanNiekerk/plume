@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useGeolocated } from 'react-geolocated';
+import { useNavigate } from 'react-router-dom';
 import { ContainerLayout } from './ContainerLayout';
+import { getLocationPath } from './paths';
 
 type Props = {
   pageName: string;
@@ -9,54 +12,23 @@ type Props = {
 export const RouteWrapper: React.FC<React.PropsWithChildren<Props>> = ({
   layout: Layout = ContainerLayout,
   children,
-  // pageName,
 }) => {
-  // useWatchGrowthbook();
+  const navigate = useNavigate();
 
-  // const navigate = useNavigate();
+  const { isGeolocationAvailable, isGeolocationEnabled, coords } = useGeolocated({
+    positionOptions: {
+      enableHighAccuracy: false,
+    },
+  });
 
-  // const { pathname, search } = useLocation();
-
-  // const { authenticated } = usePrivy();
-
-  // const userProfile = useStore(userProfileStore, (s) => s.userProfile);
-
-  // const userOrganisations = useStore(organisationsStore, (s) => s.organisations);
-
-  // const trackPage = useStore(analyticsStore, (s) => s.trackPage);
-
-  // const activeOrganisation = useStore(organisationsStore, (s) => s.getActiveOrganisation());
-
-  // const notAuthenticated = requireAuth && !authenticated;
-
-  // const notAuthorized = !requirementMet(require, activeOrganisation);
-
-  // const isLoading = notAuthenticated || notAuthorized;
-
-  // useEffect(() => {
-  //   trackPage(pageName, pathname, search);
-  // }, [pageName]);
-
-  // useEffect(() => {
-  //   if (notAuthenticated) {
-  //     navigate(StudioRoutes.signIn({ redirect: `${pathname}${search}` }));
-  //   } else if (notAuthorized) {
-  //     navigate(StudioRoutes.root());
-  //   }
-  // }, [notAuthenticated, pathname, search, notAuthorized]);
-
-  // useEffect(() => {
-  //   if (!authenticated || !userProfile) return;
-
-  //   // if the user is already on the onboarding page, don't redirect them
-  //   if (StudioRoutes.onboarding() === pathname) return;
-
-  //   if (requiresOnboarding(activeOrganisation)) {
-  //     navigate(StudioRoutes.onboarding());
-  //   }
-  // }, [authenticated, userProfile, userOrganisations, activeOrganisation]);
-
-  // return <Layout>{isLoading ? <Loader /> : children}</Layout>;
+  useEffect(() => {
+    console.log({
+      isGeolocationAvailable,
+      isGeolocationEnabled,
+      coords,
+    });
+    if (!isGeolocationAvailable || !isGeolocationEnabled || !coords) navigate(getLocationPath());
+  }, [isGeolocationAvailable, isGeolocationEnabled, coords]);
 
   return <Layout>{children}</Layout>;
 };

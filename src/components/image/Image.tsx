@@ -1,12 +1,6 @@
-import {
-  Box,
-  Center,
-  Image as ImageChakra,
-  ImageProps,
-  useBoolean,
-} from "@chakra-ui/react";
-import React, { useMemo } from "react";
-import { Loader, LoaderProps } from "../loader";
+import { Box, Center, Image as ImageChakra, ImageProps, useBoolean } from '@chakra-ui/react';
+import React, { useMemo } from 'react';
+import { Loader, LoaderProps } from '../loader';
 
 type Props = ImageProps & {
   loaderProps?: LoaderProps;
@@ -42,13 +36,7 @@ export const Image: React.FC<Props> = ({ loaderProps, ...props }) => {
 
 const ErrorOverlay: React.FC = () => {
   return (
-    <Box
-      position="absolute"
-      zIndex={100}
-      w="full"
-      h="full"
-      backgroundColor="gray.50"
-    >
+    <Box position="absolute" zIndex={100} w="full" h="full" backgroundColor="gray.50">
       <Center h="full" w="full" color="error">
         Error
       </Center>

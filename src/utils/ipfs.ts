@@ -1,23 +1,21 @@
-import { IpfsFileUploadResponse, IpfsPinListResponse } from "@/schema";
+import { IpfsFileUploadResponse, IpfsPinListResponse } from '@/schema';
 
-export const uploadToIpfs = async (
-  file: File
-): Promise<IpfsFileUploadResponse | null> => {
+export const uploadToIpfs = async (file: File): Promise<IpfsFileUploadResponse | null> => {
   try {
     const formData = new FormData();
-    formData.append("file", file);
+    formData.append('file', file);
     const metadata = JSON.stringify({
       name: file.name,
     });
-    formData.append("pinataMetadata", metadata);
+    formData.append('pinataMetadata', metadata);
 
     const options = JSON.stringify({
       cidVersion: 0,
     });
-    formData.append("pinataOptions", options);
+    formData.append('pinataOptions', options);
 
-    const res = await fetch("https://api.pinata.cloud/pinning/pinFileToIPFS", {
-      method: "POST",
+    const res = await fetch('https://api.pinata.cloud/pinning/pinFileToIPFS', {
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${import.meta.env.VITE_PINATA_JWT}`,
       },
@@ -34,15 +32,12 @@ export const uploadToIpfs = async (
 
 export const listIpfsFiles = async (): Promise<IpfsPinListResponse> => {
   try {
-    const res = await fetch(
-      "https://api.pinata.cloud/data/pinList?status=pinned",
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_PINATA_JWT}`,
-        },
-      }
-    );
+    const res = await fetch('https://api.pinata.cloud/data/pinList?status=pinned', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_PINATA_JWT}`,
+      },
+    });
     const data = await res.json();
     return IpfsPinListResponse.parse(data);
   } catch (error) {

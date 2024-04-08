@@ -1,21 +1,21 @@
 export const chain = {
-  $schema: "../chain.schema.json",
-  chain_name: "laconic",
-  status: "live",
-  network_type: "mainnet",
-  website: "https://canto.io/",
-  pretty_name: "Laconic",
-  chain_id: "laconic_9000-1",
-  bech32_prefix: "ethm",
-  node_home: "$HOME/.laconicd",
-  daemon_name: "laconicd",
-  key_algos: ["ethsecp256k1"],
-  extra_codecs: ["ethermint"],
+  $schema: '../chain.schema.json',
+  chain_name: 'laconic',
+  status: 'live',
+  network_type: 'mainnet',
+  website: 'https://canto.io/',
+  pretty_name: 'Laconic',
+  chain_id: 'laconic_9000-1',
+  bech32_prefix: 'ethm',
+  node_home: '$HOME/.laconicd',
+  daemon_name: 'laconicd',
+  key_algos: ['ethsecp256k1'],
+  extra_codecs: ['ethermint'],
   slip44: 60,
   fees: {
     fee_tokens: [
       {
-        denom: "aphoton",
+        denom: 'aphoton',
         fixed_min_gas_price: 1000000000000,
         low_gas_price: 1000000000000,
         average_gas_price: 2000000000000,
@@ -62,8 +62,8 @@ export const chain = {
   //     ],
   //   },
   logo_URIs: {
-    png: "https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.png",
-    svg: "https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.svg",
+    png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.png',
+    svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.svg',
   },
   //   peers: {
   //     seeds: [
@@ -130,8 +130,8 @@ export const chain = {
     // ],
     rest: [
       {
-        address: "http://console.laconic.com:1317",
-        provider: "Console",
+        address: 'http://console.laconic.com:1317',
+        provider: 'Console',
       },
     ],
     // grpc: [
@@ -219,42 +219,41 @@ export const chain = {
   // ],
   images: [
     {
-      png: "https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.png",
-      svg: "https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.svg",
+      png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.png',
+      svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.svg',
     },
   ],
 };
 
 export const assetList = {
-  $schema: "../assetlist.schema.json",
-  chain_name: "laconic",
+  $schema: '../assetlist.schema.json',
+  chain_name: 'laconic',
   assets: [
     {
-      description:
-        "Laconic is a Layer-1 blockchain built to deliver on the promise of DeFi",
+      description: 'Laconic is a Layer-1 blockchain built to deliver on the promise of DeFi',
       denom_units: [
         {
-          denom: "aphoton",
+          denom: 'aphoton',
           exponent: 0,
         },
         {
-          denom: "photon",
+          denom: 'photon',
           exponent: 18,
         },
       ],
-      base: "aphoton",
-      name: "Photon",
-      display: "photon",
-      symbol: "PHOTON",
+      base: 'aphoton',
+      name: 'Photon',
+      display: 'photon',
+      symbol: 'PHOTON',
       logo_URIs: {
-        png: "https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.png",
-        svg: "https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.svg",
+        png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.png',
+        svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.svg',
       },
-      coingecko_id: "canto",
+      coingecko_id: 'canto',
       images: [
         {
-          png: "https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.png",
-          svg: "https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.svg",
+          png: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.png',
+          svg: 'https://raw.githubusercontent.com/cosmos/chain-registry/master/canto/images/canto.svg',
         },
       ],
     },

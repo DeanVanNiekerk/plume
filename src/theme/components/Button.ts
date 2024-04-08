@@ -1,5 +1,5 @@
-import { defineStyle, defineStyleConfig } from "@chakra-ui/styled-system";
-import { mode } from "@chakra-ui/theme-tools";
+import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
+import { mode } from '@chakra-ui/theme-tools';
 
 type AccessibleColor = {
   bg?: string;
@@ -11,23 +11,23 @@ type AccessibleColor = {
 /** Accessible color overrides for less accessible colors. */
 const accessibleColorMap: { [key: string]: AccessibleColor } = {
   yellow: {
-    bg: "yellow.400",
-    color: "black",
-    hoverBg: "yellow.500",
-    activeBg: "yellow.600",
+    bg: 'yellow.400',
+    color: 'black',
+    hoverBg: 'yellow.500',
+    activeBg: 'yellow.600',
   },
   cyan: {
-    bg: "cyan.400",
-    color: "black",
-    hoverBg: "cyan.500",
-    activeBg: "cyan.600",
+    bg: 'cyan.400',
+    color: 'black',
+    hoverBg: 'cyan.500',
+    activeBg: 'cyan.600',
   },
 };
 
 const variantSolid = defineStyle((props) => {
   const { colorScheme: c } = props;
 
-  if (c === "gray") {
+  if (c === 'gray') {
     const bg = mode(`gray.100`, `whiteAlpha.200`)(props);
 
     return {
@@ -43,12 +43,12 @@ const variantSolid = defineStyle((props) => {
     };
   }
 
-  if (c === "primary") {
-    const bg = "brand.normal";
+  if (c === 'primary') {
+    const bg = 'brand.normal';
 
     return {
       bg,
-      color: "brand.offset",
+      color: 'brand.offset',
       _hover: {
         bg,
         _disabled: {
@@ -59,12 +59,7 @@ const variantSolid = defineStyle((props) => {
     };
   }
 
-  const {
-    bg = `${c}.500`,
-    color = "white",
-    hoverBg = `${c}.600`,
-    activeBg = `${c}.700`,
-  } = accessibleColorMap[c] ?? {};
+  const { bg = `${c}.500`, color = 'white', hoverBg = `${c}.600`, activeBg = `${c}.700` } = accessibleColorMap[c] ?? {};
 
   const background = mode(bg, `${c}.200`)(props);
 
@@ -89,8 +84,8 @@ export const buttonTheme = defineStyleConfig({
   variants,
 
   defaultProps: {
-    variant: "solid",
-    size: "md",
-    colorScheme: "gray",
+    variant: 'solid',
+    size: 'md',
+    colorScheme: 'gray',
   },
 });

@@ -1,8 +1,8 @@
-import { ChakraBaseProvider } from "@chakra-ui/react";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import { theme } from "./theme/theme.ts";
+import { ChakraBaseProvider } from '@chakra-ui/react';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import { theme } from './theme/theme.ts';
 // import { ChainProvider } from "@cosmos-kit/react";
 // import { chains, assets } from "chain-registry";
 // import { wallets } from "cosmos-kit";
@@ -18,7 +18,7 @@ import { theme } from "./theme/theme.ts";
 //   wallets,
 // });
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     {/* <ChainProvider
       chains={[chain]}
@@ -46,5 +46,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <App />
     </ChakraBaseProvider>
     {/* </ChainProvider> */}
-  </React.StrictMode>
+  </React.StrictMode>,
 );

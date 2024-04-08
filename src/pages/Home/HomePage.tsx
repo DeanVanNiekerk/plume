@@ -1,11 +1,11 @@
-import React, { useRef, useState } from "react";
-import { useIpfsPinListQuery } from "@/hooks/queries/useIpfsPinListQuery";
-import { Image } from "@/components/image/Image";
-import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
-import { Box, Center } from "@chakra-ui/react";
-import { Loader } from "@/components/loader";
-import { TakePhotoButton } from "./components/TakePhotoButton";
-import { UploadImageDrawer } from "./components/UploadImageDrawer";
+import { Image } from '@/components/image/Image';
+import { Loader } from '@/components/loader';
+import { useIpfsPinListQuery } from '@/hooks/queries/useIpfsPinListQuery';
+import { Box, Center } from '@chakra-ui/react';
+import React, { useRef, useState } from 'react';
+import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
+import { TakePhotoButton } from './components/TakePhotoButton';
+import { UploadImageDrawer } from './components/UploadImageDrawer';
 // import { useChain } from "@cosmos-kit/react";
 
 const HomePage: React.FC = () => {
@@ -29,15 +29,11 @@ const HomePage: React.FC = () => {
   };
 
   const onUploadFiles = (file: File) => {
-    console.log("file", file);
+    console.log('file', file);
     setFile(file);
   };
 
   if (query.isLoading) return <Loader />;
-
-  // console.log({
-  //   isWalletConnected,
-  // });
 
   return (
     <>
@@ -62,11 +58,7 @@ const HomePage: React.FC = () => {
       />
       <Box position="fixed" bottom={0} left={0} right={0} pb={6}>
         <Center w="full">
-          <TakePhotoButton
-            ref={ref}
-            onImageSelected={onUploadFiles}
-            onOpenCamera={onOpenCamera}
-          />
+          <TakePhotoButton ref={ref} onImageSelected={onUploadFiles} onOpenCamera={onOpenCamera} />
           {/* <Button onClick={openView}>Connect</Button> */}
         </Center>
       </Box>

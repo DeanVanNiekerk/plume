@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import ExifReader from "exifreader";
+import { Loader } from '@/components/loader';
+import { uploadToIpfs } from '@/utils/ipfs';
 import {
+  Box,
+  Button,
   Drawer,
   DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  Button,
-  Box,
   Image,
   useBoolean,
   useToast,
-} from "@chakra-ui/react";
-import { uploadToIpfs } from "@/utils/ipfs";
-import { Loader } from "@/components/loader";
+} from '@chakra-ui/react';
+import ExifReader from 'exifreader';
+import React, { useEffect, useState } from 'react';
 
 type Props = {
   file: File | null;
@@ -23,11 +23,7 @@ type Props = {
   onSuccess: () => void;
 };
 
-export const UploadImageDrawer: React.FC<Props> = ({
-  file,
-  onClose,
-  onSuccess,
-}) => {
+export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess }) => {
   const isOpen = !!file;
 
   const toast = useToast();
@@ -48,7 +44,7 @@ export const UploadImageDrawer: React.FC<Props> = ({
     const load = async () => {
       if (!file) return;
       const tags = await ExifReader.load(file);
-      console.log("EXIF Data:", tags);
+      console.log('EXIF Data:', tags);
     };
     load();
   }, [file]);
@@ -62,14 +58,14 @@ export const UploadImageDrawer: React.FC<Props> = ({
       const response = await uploadToIpfs(file);
       if (response) {
         toast({
-          title: "Success!",
-          status: "success",
+          title: 'Success!',
+          status: 'success',
         });
         onSuccess();
       } else {
         toast({
-          title: "Failed to upload to IPFS",
-          status: "error",
+          title: 'Failed to upload to IPFS',
+          status: 'error',
         });
       }
     } finally {
@@ -96,12 +92,7 @@ export const UploadImageDrawer: React.FC<Props> = ({
         </DrawerBody>
 
         <DrawerFooter>
-          <Button
-            variant="outline"
-            mr={3}
-            onClick={onClose}
-            isDisabled={isSaving}
-          >
+          <Button variant="outline" mr={3} onClick={onClose} isDisabled={isSaving}>
             Cancel
           </Button>
           <Button colorScheme="primary" onClick={save} isLoading={isSaving}>
