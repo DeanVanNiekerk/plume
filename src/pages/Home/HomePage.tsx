@@ -6,6 +6,7 @@ import { Box, Center } from "@chakra-ui/react";
 import { Loader } from "@/components/loader";
 import { TakePhotoButton } from "./components/TakePhotoButton";
 import { UploadImageDrawer } from "./components/UploadImageDrawer";
+// import { useChain } from "@cosmos-kit/react";
 
 const HomePage: React.FC = () => {
   const query = useIpfsPinListQuery();
@@ -13,6 +14,8 @@ const HomePage: React.FC = () => {
   const ref = useRef<HTMLInputElement>(null);
 
   const [file, setFile] = useState<File | null>(null);
+
+  // const { isWalletConnected, openView } = useChain("laconic");
 
   const onOpenCamera = (ev: React.MouseEvent) => {
     setFile(null);
@@ -31,6 +34,10 @@ const HomePage: React.FC = () => {
   };
 
   if (query.isLoading) return <Loader />;
+
+  // console.log({
+  //   isWalletConnected,
+  // });
 
   return (
     <>
@@ -60,6 +67,7 @@ const HomePage: React.FC = () => {
             onImageSelected={onUploadFiles}
             onOpenCamera={onOpenCamera}
           />
+          {/* <Button onClick={openView}>Connect</Button> */}
         </Center>
       </Box>
     </>

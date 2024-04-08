@@ -46,6 +46,7 @@ export const UploadImageDrawer: React.FC<Props> = ({
 
   useEffect(() => {
     const load = async () => {
+      if (!file) return;
       const tags = await ExifReader.load(file);
       console.log("EXIF Data:", tags);
     };

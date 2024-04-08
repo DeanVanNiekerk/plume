@@ -19,9 +19,14 @@
     "@chakra-ui/styled-system": "^2.9.2",
     "@chakra-ui/theme-tools": "^2.1.2",
     "@chakra-ui/utils": "^2.0.14",
+    "@cosmos-kit/keplr": "^2.6.9",
+    "@cosmos-kit/react": "^2.10.11",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@interchain-ui/react": "^1.22.11",
     "@tanstack/react-query": "^5.28.4",
+    "chain-registry": "^1.33.19",
+    "cosmos-kit": "^2.9.4",
     "eslint-config-prettier": "^9.1.0",
     "exifreader": "^4.21.1",
     "framer-motion": "^11.0.14",
@@ -45,6 +50,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
-    "vite": "^5.1.6"
+    "vite": "^5.1.6",
+    "vite-plugin-mkcert": "^1.17.5",
+    "vite-plugin-node-polyfills": "^0.21.0"
   }
 }
