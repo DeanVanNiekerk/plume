@@ -1,22 +1,10 @@
 import { ColorMode, extendTheme, ThemeConfig } from '@chakra-ui/react';
-// import '@fontsource/inter/400.css';
-// import '@fontsource/inter/500.css';
-// import '@fontsource/inter/600.css';
-// import '@fontsource/inter/700.css';
-// import '@fontsource/montserrat/100.css';
-// import '@fontsource/montserrat/200.css';
-// import '@fontsource/montserrat/300.css';
-// import '@fontsource/montserrat/400.css';
-// import '@fontsource/montserrat/500.css';
-// import '@fontsource/montserrat/600.css';
-// import '@fontsource/montserrat/700.css';
-// import '@fontsource/montserrat/900.css';
-// import '@fontsource/poppins/400.css';
-// import '@fontsource/poppins/500.css';
-// import '@fontsource/poppins/700.css';
-// import '@fontsource/poppins/900-italic.css';
+import '@fontsource/dela-gothic-one';
+import '@fontsource/montserrat';
+import '@fontsource/poppins';
+import '../theme/main.css';
 import { colors, semanticTokens } from './colors';
-import { buttonTheme, drawerTheme } from './components';
+import { buttonTheme, drawerTheme, tabsTheme } from './components';
 
 const config: ThemeConfig = {
   initialColorMode: 'dark',
@@ -26,10 +14,10 @@ const config: ThemeConfig = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const themeBase: Record<string, any> = {
   config: config,
-  // fonts: {
-  //   body: 'Inter, Montserrat',
-  //   heading: 'Poppins, Montserrat',
-  // },
+  fonts: {
+    body: 'Poppins, Montserrat',
+    heading: `'Dela Gothic One', Montserrat`,
+  },
   // fontSizes: {
   //   xxs: '0.625rem', // 10px
   //   xs: '0.75rem', // 12px
@@ -69,6 +57,7 @@ export const themeBase: Record<string, any> = {
   components: {
     Button: buttonTheme,
     Drawer: drawerTheme,
+    Tabs: tabsTheme,
   },
 };
 

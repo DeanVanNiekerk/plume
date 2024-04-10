@@ -8,7 +8,7 @@ import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 const DEFAULT_ZOOM = 16;
 const IMAGE_MAX_SIZE = 70;
 
-export const Map: React.FC = () => {
+export const MapLeaflet: React.FC = () => {
   const query = useIpfsPinListQuery();
 
   const { position } = useCurrentPosition();

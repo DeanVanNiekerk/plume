@@ -44,11 +44,11 @@ const variantSolid = defineStyle((props) => {
   }
 
   if (c === 'primary') {
-    const bg = 'brand.normal';
+    const bg = mode(`brand.normal`, `brand.offset`)(props);
 
     return {
       bg,
-      color: 'brand.offset',
+      color: mode(`brand.offset`, `brand.normal`)(props),
       _hover: {
         bg,
         _disabled: {
@@ -80,9 +80,52 @@ const variants = {
   solid: variantSolid,
 };
 
+const sizes = {
+  xl: {
+    gap: '4',
+    h: '14',
+    minW: '14',
+    borderRadius: 'lg',
+    fontSize: 'lg',
+    px: '8',
+  },
+  lg: {
+    gap: '3',
+    h: '12',
+    minW: '12',
+    borderRadius: 'lg',
+    fontSize: 'md',
+    px: '6',
+  },
+  md: {
+    gap: '2',
+    h: '10',
+    minW: '10',
+    borderRadius: 'md',
+    fontSize: 'sm',
+    px: '4',
+  },
+  sm: {
+    gap: '2',
+    h: '8',
+    minW: '8',
+    fontSize: 'sm',
+    borderRadius: 'sm',
+    px: '3',
+  },
+  xs: {
+    gap: '1',
+    h: '6',
+    minW: '6',
+    fontSize: 'xs',
+    borderRadius: 'sm',
+    px: '2',
+  },
+};
+
 export const buttonTheme = defineStyleConfig({
   variants,
-
+  sizes,
   defaultProps: {
     variant: 'solid',
     size: 'md',

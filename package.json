@@ -23,7 +23,11 @@
     "@cosmos-kit/react": "^2.10.11",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/dela-gothic-one": "^5.0.18",
+    "@fontsource/montserrat": "^5.0.17",
+    "@fontsource/poppins": "^5.0.13",
     "@interchain-ui/react": "^1.22.11",
+    "@maptiler/sdk": "^2.0.1",
     "@tanstack/react-query": "^5.28.4",
     "chain-registry": "^1.33.19",
     "cosmos-kit": "^2.9.4",
@@ -35,9 +39,9 @@
     "react-geolocated": "^4.1.2",
     "react-icons": "^5.0.1",
     "react-leaflet": "^4.2.1",
-    "react-responsive-masonry": "^2.2.0",
     "react-router-dom": "^6.22.3",
     "react-virtualized-auto-sizer": "^1.0.24",
+    "react-virtuoso": "^4.7.8",
     "zod": "^3.22.4"
   },
   "devDependencies": {

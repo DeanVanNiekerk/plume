@@ -15,7 +15,7 @@ export const Navbar: React.FC = () => {
     >
       <Container maxW={CONTAINER_MAX_WIDTH} h="full" p={0}>
         <Center h="full">
-          <Heading color="primary" size="lg">
+          <Heading color="primary" size="xl">
             Ranger
           </Heading>
         </Center>

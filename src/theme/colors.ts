@@ -1,15 +1,13 @@
 // Based off of: https://github.com/chakra-ui/chakra-ui/blob/main/packages/components/theme/src/foundations/colors.ts
 
-export const _defaultLinearGradient = 'linear-gradient(92.65deg, #855FF2 21.92%, #BA324F 117.22%, #D85B2C 214.78%)';
-
 export const colors = {
   transparent: 'transparent',
   black: '#171717',
   white: '#FDFCFD',
 
   brand: {
-    normal: '#34eb6e',
-    offset: '#141414',
+    normal: '#0B26B5',
+    offset: '#F3DFFF',
   },
 
   whiteAlpha: {
@@ -144,33 +142,15 @@ export const semanticTokens = {
     default: 'gray.200',
     _dark: 'gray.800',
   },
-
   // Custom Tokens
   primary: {
     default: 'brand.normal',
-    _dark: 'brand.normal',
-  },
-  // This gradient will only work on backgrounds,
-  // for text gradients you need to use the useToken hook to get the gradient value
-  /*
-    const [primaryGradient] = useToken('colors', ['primaryGradient']);
-    ...
-    <Text
-      bgGradient={primaryGradient}
-      bgClip="text"
-    >
-      {name}
-    </Text>
-  */
-  // https://chakra-ui.com/docs/styled-system/gradient#text-gradient-api
-  primaryGradient: {
-    default: _defaultLinearGradient,
-    _dark: _defaultLinearGradient,
+    _dark: 'brand.offset',
   },
   // this color should be clearly visible on top of the primary color
   primaryOffset: {
     default: 'brand.offset',
-    _dark: 'brand.offset',
+    _dark: 'brand.normal',
   },
   text: {
     default: 'black',
