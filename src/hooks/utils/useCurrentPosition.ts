@@ -32,8 +32,8 @@ export const useCurrentPosition = () => {
 
   useEffect(() => {
     if (coords) {
-      setPosition((oldPosition) => {
-        if (oldPosition) return oldPosition;
+      setPosition(() => {
+        // if (oldPosition) return oldPosition;
         console.log('Setting location from geolocation', coords);
         return {
           longitude: coords.longitude,
