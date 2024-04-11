@@ -22,9 +22,10 @@ type Props = {
   file: File | null;
   onClose: () => void;
   onSuccess: () => void;
+  coords: GeolocationCoordinates | null;
 };
 
-export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess }) => {
+export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess, coords }) => {
   const isOpen = !!file;
 
   const toast = useToast();
@@ -33,7 +34,7 @@ export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess })
 
   const [url, setUrl] = useState<string | null>(null);
 
-  const [position, setPosition] = useState<Position | null>();
+  const [position, setPosition] = useState<Position | null>(null);
 
   useEffect(() => {
     if (!file) return;
@@ -62,6 +63,7 @@ export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess })
       }
 
       console.log('EXIF Data:', tags);
+      console.log('coords:', coords);
     };
     load();
   }, [file]);
@@ -69,18 +71,38 @@ export const UploadImageDrawer: React.FC<Props> = ({ file, onClose, onSuccess })
   const save = async () => {
     if (!file) return;
 
-    if (!position) {
-      toast({
-        title: 'Failed to get GPS data from image',
-        status: 'error',
-      });
-      return;
-    }
-
     setIsSaving.on();
 
     try {
-      const response = await uploadToIpfs(file, position);
+      let finalPosition = position;
+      let finalAccuracy = 0;
+
+      if (!finalPosition && coords) {
+        finalPosition = {
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+        };
+        finalAccuracy = coords.accuracy;
+      }
+
+      if (!finalPosition) {
+        toast({
+          title: 'Failed to get location browser or from EXIF data',
+          status: 'error',
+        });
+        return;
+      }
+
+      if (finalAccuracy > 100) {
+        toast({
+          title: `Accuracy on location is not low enough. Accuracy: ${Math.round(finalAccuracy)}m, should  100m or less.`,
+          status: 'error',
+        });
+        return;
+      }
+
+      const response = await uploadToIpfs(file, finalPosition, finalAccuracy);
+
       if (response) {
         toast({
           title: 'Success!',

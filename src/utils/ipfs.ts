@@ -1,6 +1,10 @@
 import { IpfsFileUploadResponse, IpfsPinListResponse, Position } from '@/schema';
 
-export const uploadToIpfs = async (file: File, position: Position): Promise<IpfsFileUploadResponse | null> => {
+export const uploadToIpfs = async (
+  file: File,
+  position: Position,
+  accuracy: number,
+): Promise<IpfsFileUploadResponse | null> => {
   try {
     const formData = new FormData();
     formData.append('file', file);
@@ -9,6 +13,7 @@ export const uploadToIpfs = async (file: File, position: Position): Promise<Ipfs
       keyvalues: {
         latitude: position.latitude,
         longitude: position.longitude,
+        accuracy,
       },
     });
     formData.append('pinataMetadata', metadata);

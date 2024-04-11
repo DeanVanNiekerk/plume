@@ -3,10 +3,17 @@ import { useOnFileChange } from '@/hooks/utils/useOnFileChange';
 import { Box, Center, Icon, IconButton } from '@chakra-ui/react';
 import { useQueryClient } from '@tanstack/react-query';
 import React, { useRef, useState } from 'react';
+import { useGeolocated } from 'react-geolocated';
 import { FaCamera } from 'react-icons/fa';
 import { UploadImageDrawer } from './UploadImageDrawer';
 
 export const TakePhotoButton: React.FC = () => {
+  const { coords, getPosition } = useGeolocated({
+    positionOptions: {
+      enableHighAccuracy: false,
+    },
+  });
+
   const client = useQueryClient();
 
   const ref = useRef<HTMLInputElement>(null);
@@ -22,6 +29,8 @@ export const TakePhotoButton: React.FC = () => {
     setTimeout(() => {
       ref.current?.click();
     }, 100);
+
+    getPosition();
   };
 
   const onChange = useOnFileChange((files) => setFile(files[0]), 1);
@@ -37,6 +46,7 @@ export const TakePhotoButton: React.FC = () => {
             queryKey: [ipfsPinListQueryKey],
           });
         }}
+        coords={coords ?? null}
       />
       <Box pt={2} zIndex={1} boxShadow="1px -15px 24px 15px rgba(23,23,23,1)">
         <Center w="full">
@@ -48,7 +58,7 @@ export const TakePhotoButton: React.FC = () => {
             style={{ display: 'none' }}
             type="file"
             multiple={false}
-            accept="image/*"
+            accept="image/*,.heic"
             capture="environment"
           />
           <IconButton
