@@ -58,7 +58,7 @@ export const TakePhotoButton: React.FC = () => {
             style={{ display: 'none' }}
             type="file"
             multiple={false}
-            accept="image/*,.heic"
+            accept="image/*"
             capture="environment"
           />
           <IconButton
