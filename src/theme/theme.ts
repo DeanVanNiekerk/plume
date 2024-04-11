@@ -2,7 +2,6 @@ import { ColorMode, extendTheme, ThemeConfig } from '@chakra-ui/react';
 import '@fontsource/dela-gothic-one';
 import '@fontsource/montserrat';
 import '@fontsource/poppins';
-import '../theme/main.css';
 import { colors, semanticTokens } from './colors';
 import { buttonTheme, drawerTheme, tabsTheme } from './components';
 
@@ -44,7 +43,8 @@ export const themeBase: Record<string, any> = {
   // },
   styles: {
     global: ({ colorMode }: { colorMode: ColorMode }) => ({
-      'html, body': {
+      'html, body, #root': {
+        height: '100%',
         color: colorMode === 'dark' ? 'white' : 'black',
         backgroundColor: colorMode === 'dark' ? 'black' : 'white',
       },
